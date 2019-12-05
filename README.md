@@ -7,7 +7,7 @@ fun main() {
     val adapter = Adapter()
     adapter(object: Adapter.OnClickListener {
         override fun onItemClick(position: Int) {
-            // Yes, I have received a callback, open up the next activity.
+            // Yes, I have received a callback, go to the next activity.
             println("Clicked position is $position")
         }
         override fun onRadioButtonClick(position: Int) {
@@ -44,7 +44,7 @@ fun main() {
     val adapter = Adapter()
     adapter(object: Adapter.OnItemClickListener {
         override fun onItemClick(position: Int) {
-            // Yes! I have received a callback, open up the next activity.
+            // Yes, I have received a callback, go to the next activity.
             println("Clicked position is $position")
         }
     })
