@@ -11,7 +11,7 @@ fun main() {
     val adapter = Adapter()
     adapter(object: Adapter.OnClickListener {
         override fun onItemClick(position: Int) {
-            // Yes.. I have received a callback, open up the next activity.
+            // Yes, I have received a callback, open up the next activity.
             println("Clicked position is $position")
         }
 
