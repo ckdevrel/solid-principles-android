@@ -76,6 +76,46 @@ class Adapter {
 
 ## D - The Dependency Inversion Principle (DIP)
 
+### Bad
+```kotlin
+fun main() {
+    /* As a end user, I don't care about how will I retrieve the data. 
+     * Do whatever you want and simply get my data. 
+     */
+    val user = User()
+    user.getMyData(3)
+}
+
+class User {
+
+    fun getMyData(requestCode: Int) {
+        when (requestCode) {
+            1 -> {
+                val firebase = Firebase()
+                firebase.fetchData() 
+            }
+            2 -> {
+                val restClient = RestClient()
+                restClient.fetchData() 
+            } 
+            else -> print("I dont care about the user. Don't do anything. Keep quiet!")
+        } 
+
+    }
+}
+
+class Firebase {
+    fun fetchData(){
+        print("Syncing the data from the firebase storage")
+    } 
+}
+
+class RestClient {
+    fun fetchData(){ 
+        print("Hitting the api and getting back the response")
+    } 
+}
+```
 ### Good
 ```kotlin
 fun main() {
