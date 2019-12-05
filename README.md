@@ -6,7 +6,7 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 ### Interface Segregation
 
-```
+```kotlin
 fun main() {
     val adapter = Adapter()
     adapter(object: Adapter.OnClickListener {
