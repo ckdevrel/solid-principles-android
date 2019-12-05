@@ -79,9 +79,6 @@ class Adapter {
 ### Bad
 ```kotlin
 fun main() {
-    /* As a end user, I don't care about how will I retrieve the data. 
-     * Do whatever you want and simply get my data. 
-     */
     val user = User()
     user.getMyData(3)
 }
