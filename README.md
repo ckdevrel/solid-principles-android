@@ -94,15 +94,15 @@ class MessageDisplayer {
 
 class SnackBar {
     
-    fun showSnackMessage(mesage: String) {
-        print(mesage)
+    fun showSnackMessage(message: String) {
+        print(message)
     }
 }
 
 class Toast {
     
-    fun showToastMessage(mesage: String) {
-        print("Displaying message in Toast")
+    fun showToastMessage(message: String) {
+        print(message)
     }
 }
 ```
