@@ -65,8 +65,47 @@ class Adapter(private val users: List<User>) {
 
 data class User(val name: String, val mobile: String)
 
-```
+### Bad
 
+```
+## O — The Open-Closed Principle (OCP)
+```kotlin
+fun main() {
+    val messageDisplayer = MessageDisplayer()
+    messageDisplayer.displayMessage(Toast())
+}
+
+class MessageDisplayer {
+    
+    fun displayMessage(anyView: Any) {
+        
+        when {
+            anyView is SnackBar -> {
+                anyView.showSnackMessage("Displaying message in SnackBar")
+                
+            }
+            
+            anyView is Toast -> {
+                anyView.showToastMessage("Displaying message in Toast")
+            }
+        }
+    }
+}
+
+class SnackBar {
+    
+    fun showSnackMessage(mesage: String) {
+        print(mesage)
+    }
+}
+
+class Toast {
+    
+    fun showToastMessage(mesage: String) {
+        print("Displaying message in Toast")
+    }
+}
+```
 
 ## I — The Interface Segregation Principle (ISP):
 
