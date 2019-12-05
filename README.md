@@ -1,6 +1,7 @@
 
-### I — The Interface Segregation Principle (ISP):
+## I — The Interface Segregation Principle (ISP):
 
+### Bad
 ```kotlin
 fun main() {
     val adapter = Adapter()
@@ -37,3 +38,5 @@ class Adapter /*:RecyclerView.Adapter<RecyclerView.ViewHolder>()*/ {
 }
 
 ```
+### Good
+
