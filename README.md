@@ -177,6 +177,49 @@ class RadioButton: ClickListener {
     }
 }
 ```
+
+### Good
+
+```kotlin
+fun main() {
+    val adapter = Adapter()
+    adapter.select(RadioButton())
+}
+
+class Adapter {
+
+    fun select(clickListener: ClickListener) {
+        clickListener.onClick(1)
+    }
+}
+
+interface ClickListener {
+    fun onClick(position: Int)
+} 
+
+class ListItem: ClickListener {
+    override fun onClick(position: Int){
+       changeTheBackground()
+       println("Clicked ListItem $position")
+    }
+    
+    fun changeTheBackground() {
+       println("Change the background color of the item view")
+    }
+    
+}
+
+class RadioButton: ClickListener {
+    override fun onClick(position: Int){
+       check()
+       println("Clicked RadioButton $position")
+    }
+    
+    fun check() {
+       println("Enable the radio button")
+    }
+}
+```
 ## I — The Interface Segregation Principle (ISP):
 
 ### Bad
