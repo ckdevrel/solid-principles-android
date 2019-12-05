@@ -99,6 +99,31 @@ class Car {
 }
 ```
 
+```kotlin
+fun main() {
+    val mileageCalculator = MileageCalculator()
+    mileageCalculator.showMileage(Bike())
+}
+
+class MileageCalculator {
+
+    fun showMileage(vehicle: Vehicle) {
+        println(vehicle.getMileage())
+    }
+}
+
+interface Vehicle {
+    fun getMileage(): String
+} 
+
+class Bike: Vehicle {
+    override fun getMileage(): String = "50"
+}
+
+class Car: Vehicle {
+    override fun getMileage(): String = "12"
+}
+```
 ## I — The Interface Segregation Principle (ISP):
 
 ### Bad
