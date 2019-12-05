@@ -71,39 +71,31 @@ data class User(val name: String, val mobile: String)
 
 ```kotlin
 fun main() {
-    val messageDisplayer = MessageDisplayer()
-    messageDisplayer.displayMessage(Toast())
+    val mileageCalculator = MileageCalculator()
+    mileageCalculator.showMileage(Car())
 }
 
-class MessageDisplayer {
-    
-    fun displayMessage(anyView: Any) {
-        
+class MileageCalculator {
+
+    fun showMileage(anyView: Any) {
         when {
-            anyView is SnackBar -> {
-                anyView.showSnackMessage("Displaying message in SnackBar")
-                
+            anyView is Bike -> {
+                print(anyView.getBikeMileage())
             }
-            
-            anyView is Toast -> {
-                anyView.showToastMessage("Displaying message in Toast")
+            anyView is Car -> {
+                print(anyView.getCarMileage())
             }
         }
     }
 }
 
-class SnackBar {
-    
-    fun showSnackMessage(message: String) {
-        print(message)
-    }
+
+class Bike {
+    fun getBikeMileage(): String = "50"
 }
 
-class Toast {
-    
-    fun showToastMessage(message: String) {
-        print(message)
-    }
+class Car {
+    fun getCarMileage(): String = "12"
 }
 ```
 
