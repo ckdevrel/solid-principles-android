@@ -58,7 +58,7 @@ class Adapter(private val users: List<User>) {
         val user = users[position]
         
         println("Name has been set as ${user.name} to TextView")
-        println("Mobile numbers has been set as ${user.mobile} to TextView")
+        println("Mobile number has been set as ${user.mobile} to TextView")
     }
 }
 
