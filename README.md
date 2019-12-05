@@ -10,7 +10,6 @@ fun main() {
             // Yes, I have received a callback, open up the next activity.
             println("Clicked position is $position")
         }
-
         override fun onRadioButtonClick(position: Int) {
             // This is no longer needed for this activity, but still I have been implemented for no use...
         }
@@ -39,4 +38,39 @@ class Adapter /*:RecyclerView.Adapter<RecyclerView.ViewHolder>()*/ {
 
 ```
 ### Good
+
+```kotlin
+fun main() {
+    val adapter = Adapter()
+    adapter(object: Adapter.OnItemClickListener {
+        override fun onItemClick(position: Int) {
+            // Yes! I have received a callback, open up the next activity.
+            println("Clicked position is $position")
+        }
+    })
+    adapter.execute()
+}
+
+class Adapter /*:RecyclerView.Adapter<RecyclerView.ViewHolder>()*/ {
+
+    private var onItemClickListener: OnItemClickListener? =null
+   
+    operator fun invoke (onItemClickListener: OnItemClickListener) {
+        this.onItemClickListener = onItemClickListener
+    }
+
+    fun execute() {
+        onItemClickListener?.onItemClick(4)
+    }
+    
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
+    }
+    
+    interface OnRadioClickListener {
+        fun onRadioButtonClick(position: Int)
+    }
+
+}
+```
 
