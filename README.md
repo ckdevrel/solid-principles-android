@@ -1,3 +1,72 @@
+## S — The Single Responsibility Principle (SRP):
+
+### Bad
+
+```kotlin
+fun main() {
+    val users = listOf(User(name = "Android User", mobileNumbers = listOf("987654321", "9999999999")))
+    val adapter = Adapter(users)
+}
+
+class Adapter(private val users: List<User>) {
+    
+    /** Calling onBindViewHolder here just for a demo purpose. In a RecyclerView adapter,
+     *  onBindViewHolder will be triggered as part of adapter life cycle.
+     **/  
+    init {
+        onBindViewHolder(0)
+    }
+    
+    fun onBindViewHolder(position: Int) {
+        val user = users[position]
+        
+        println("Name has been set as ${user.name} to TextView")
+        
+        /** 
+         * I didn't receive the proper data to display it in the UI.. 
+         * So let me convert it.
+        **/
+        val mobileNumber = user.mobileNumbers.joinToString()
+        
+        println("Mobile numbers has been set as $mobileNumber to TextView")
+    }
+}
+
+
+data class User(val name: String, val mobileNumbers: List<String>)
+```
+
+### Good
+
+```kotlin
+
+fun main() {
+    val users = listOf(User(name = "Android User", mobile = "987654321, 9999999999"))
+    val adapter = Adapter(users)
+}
+
+class Adapter(private val users: List<User>) {
+    
+    /** Calling onBindViewHolder here just for a demo purpose,
+     *  onBindViewHolder will be triggered as part of adapter life cycle.
+     **/  
+    init {
+        onBindViewHolder(0)
+    }
+    
+    fun onBindViewHolder(position: Int) {
+        val user = users[position]
+        
+        println("Name has been set as ${user.name} to TextView")
+        println("Mobile numbers has been set as ${user.mobile} to TextView")
+    }
+}
+
+
+data class User(val name: String, val mobile: String)
+
+```
+
 
 ## I — The Interface Segregation Principle (ISP):
 
