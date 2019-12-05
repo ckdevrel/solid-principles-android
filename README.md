@@ -1,5 +1,5 @@
 
-### Interface Segregation
+### I — The Interface Segregation Principle (ISP):
 
 ```kotlin
 fun main() {
