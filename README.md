@@ -126,6 +126,53 @@ class Car: Vehicle {
     override fun getMileage(): String = "12"
 }
 ```
+
+## L - The Liskov Substitution Principle (LSP)
+
+### Bad
+```kotlin
+public interface ClickListener {
+    public void onClick();
+}
+  
+  public class Fragment1 implements ClickListener {
+    @Override
+    public void onClick() {
+        //handle logic            
+    }
+    
+    public void decrementClickCount() {
+        
+    }    
+  }
+  
+  public class Fragment2 implements ClickListener {
+    @Override
+    public void onClick() {
+        //handle logic            
+    }
+    
+    public void incrementClickCount() {
+        
+    }
+  } 
+
+
+
+  public void onButtonClick(ClickListener clickListener) {
+     // IF we have a requirement where we need to increment the click count in 
+     // framgent2 but decrement the count in fragment 1
+     // we would have to follow something like this, which is bad practice.
+     if(clickListener instanceOf Fragment2) {
+        clickListener.incrementClickCount();  
+       
+     } else if(clickListener instanceOf Fragment1) {
+        clickListener.decrementClickCount();  
+     }
+    
+     clickListener.onClick();
+  }
+```
 ## I — The Interface Segregation Principle (ISP):
 
 ### Bad
