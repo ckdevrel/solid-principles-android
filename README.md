@@ -18,7 +18,7 @@ fun main() {
     adapter.execute()
 }
 
-class Adapter /*:RecyclerView.Adapter<RecyclerView.ViewHolder>()*/ {
+class Adapter {
 
     private var onClickListener: OnClickListener? =null
    
@@ -51,7 +51,7 @@ fun main() {
     adapter.execute()
 }
 
-class Adapter /*:RecyclerView.Adapter<RecyclerView.ViewHolder>()*/ {
+class Adapter {
 
     private var onItemClickListener: OnItemClickListener? =null
    
