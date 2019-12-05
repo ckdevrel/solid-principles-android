@@ -64,11 +64,11 @@ class Adapter(private val users: List<User>) {
 
 
 data class User(val name: String, val mobile: String)
+```
+## O — The Open-Closed Principle (OCP)
 
 ### Bad
 
-```
-## O — The Open-Closed Principle (OCP)
 ```kotlin
 fun main() {
     val messageDisplayer = MessageDisplayer()
