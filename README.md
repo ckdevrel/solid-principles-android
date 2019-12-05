@@ -99,6 +99,8 @@ class Car {
 }
 ```
 
+### Good
+
 ```kotlin
 fun main() {
     val mileageCalculator = MileageCalculator()
