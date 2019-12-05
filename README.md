@@ -131,47 +131,51 @@ class Car: Vehicle {
 
 ### Bad
 ```kotlin
-public interface ClickListener {
-    public void onClick();
+fun main() {
+    val adapter = Adapter()
+    adapter.select(RadioButton())
 }
-  
-  public class Fragment1 implements ClickListener {
-    @Override
-    public void onClick() {
-        //handle logic            
+
+class Adapter {
+
+    fun select(clickListener: ClickListener) {
+        when {
+           clickListener is ListItem -> {
+               clickListener.changeTheBackground()
+           }
+           
+           clickListener is RadioButton -> {
+               clickListener.check()
+           }
+        }
+        clickListener.onClick(1)
+    }
+}
+
+interface ClickListener {
+    fun onClick(position: Int)
+} 
+
+class ListItem: ClickListener {
+    override fun onClick(position: Int){
+       println("Clicked ListItem $position")
     }
     
-    public void decrementClickCount() {
-        
-    }    
-  }
-  
-  public class Fragment2 implements ClickListener {
-    @Override
-    public void onClick() {
-        //handle logic            
+    fun changeTheBackground() {
+       println("Change the background color of the item view")
     }
     
-    public void incrementClickCount() {
-        
+}
+
+class RadioButton: ClickListener {
+    override fun onClick(position: Int){
+       println("Clicked RadioButton $position")
     }
-  } 
-
-
-
-  public void onButtonClick(ClickListener clickListener) {
-     // IF we have a requirement where we need to increment the click count in 
-     // framgent2 but decrement the count in fragment 1
-     // we would have to follow something like this, which is bad practice.
-     if(clickListener instanceOf Fragment2) {
-        clickListener.incrementClickCount();  
-       
-     } else if(clickListener instanceOf Fragment1) {
-        clickListener.decrementClickCount();  
-     }
     
-     clickListener.onClick();
-  }
+    fun check() {
+       println("Enable the radio button")
+    }
+}
 ```
 ## I — The Interface Segregation Principle (ISP):
 
